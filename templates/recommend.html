@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommender System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .text-white { color: white; }
+    </style>
+</head>
+<body style="background-color:black">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg" style="background-color:#00a65a">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white">MY BOOK RECOMMENDER</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link text-white" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="/recommend">Recommend</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="text-white" style="font-size:50px">Recommend Best Books</h1>
+            <form action="/recommend" method="post">
+                <input type="text" class="form-control" name="book_name" placeholder="Enter Book Name"><br>
+                <input type="submit" class="btn btn-lg btn-warning">
+            </form>
+        </div>
+    </div>
+
+    <!-- Row for book cards -->
+    <div class="row mt-4">
+        {% for book, img in books %}
+        <div class="col-md-3 col-sm-6 mb-4">
+            <div class="card bg-dark text-white">
+                <img class="card-img-top" src="{{ img }}" alt="{{ book }}">
+                <div class="card-body text-center">
+                    <h5>{{ book }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>
